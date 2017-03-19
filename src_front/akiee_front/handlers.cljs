@@ -16,13 +16,19 @@
 ; (def gui (js/require "nw.gui"))
 (def path (nj/require "path"))
 (def fs (js/require "fs"))
+(def electron (nj/require "electron"))
+(def remote (.-remote electron))
+
+(.log js/console "ELECTRON: " electron)
+(.log js/console "REMOTE: " remote)
 
 (enable-console-print!)
 ;; Handles events for user interactions
 
 ;; =================
 ;; Constants:
-; (def WIN (.get (.-Window gui)))
+
+(def WIN js/window)
 
 ;; =================
 ;; Globals
@@ -73,8 +79,8 @@
   (do
     (fo/save-task-file (no/lon->md (db/nodes)) (db/task-file-path) (db/changed?)
                        db/set-changed!
-                       #(fw/on-file-change %1 %2 (on-file-change-reload (db/task-file-path))))))
-    ; (.close WIN true)))
+                       #(fw/on-file-change %1 %2 (on-file-change-reload (db/task-file-path))))
+    (.close js/window)))
 
 (defn handle-blur
   "Event ->
@@ -88,8 +94,10 @@
   "Register the window event handlers"
   []
   (do
-    (events/listen js/window "blur" handle-blur)))
-    ; (.on WIN "close" handle-close))) ;; can not use google closure here, because of nw.js
+    (events/listen js/window "blur" handle-blur)
+    ;(events/listen js/window "close" #(println "CLOSE"))
+    ; .getCurrentWindow()
+    (.on (.getCurrentWindow remote) "close" handle-close))) ;; can not use google closure here, because of main-process
 
 (defn handle-onchange-search
   "Event -> GlobalState

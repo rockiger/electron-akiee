@@ -41,7 +41,9 @@ goog.addDependency("../akiee_front/rank.js", ['akiee_front.rank'], ['akiee_front
 goog.addDependency("../cljs/reader.js", ['cljs.reader'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer']);
 goog.addDependency("../jayq/core.js", ['jayq.core'], ['cljs.core', 'clojure.string', 'cljs.reader']);
 goog.addDependency("../akiee_front/handlers.js", ['akiee_front.handlers'], ['akiee_front.node', 'akiee_front.rank', 'cljs.core', 'akiee_front.filewatcher', 'akiee_front.app_db', 'akiee_front.constants', 'akiee_front.dom_helpers', 'cljs.nodejs', 'jayq.core', 'clojure.string', 'goog.events', 'akiee_front.fileoperations', 'historian.core']);
-goog.addDependency("../akiee_front/core.js", ['akiee_front.core'], ['akiee_front.handlers', 'reagent.core', 'cljs.core', 'akiee_front.app_db', 'akiee_front.constants', 'cljs.nodejs']);
+goog.addDependency("../akiee_front/sidebar.js", ['akiee_front.sidebar'], ['akiee_front.node', 'akiee_front.handlers', 'reagent.core', 'cljs.core', 'akiee_front.app_db', 'akiee_front.constants']);
+goog.addDependency("../akiee_front/dialogs.js", ['akiee_front.dialogs'], ['cljs.core', 'akiee_front.app_db', 'akiee_front.constants']);
+goog.addDependency("../akiee_front/core.js", ['akiee_front.core'], ['akiee_front.sidebar', 'akiee_front.node', 'akiee_front.handlers', 'reagent.core', 'cljs.core', 'akiee_front.app_db', 'akiee_front.constants', 'cljs.nodejs', 'akiee_front.dialogs']);
 goog.addDependency("../akiee_front/conf.js", ['akiee_front.conf'], ['cljs.core']);
 goog.addDependency("../cljs/core/async/impl/protocols.js", ['cljs.core.async.impl.protocols'], ['cljs.core']);
 goog.addDependency("../cljs/core/async/impl/buffers.js", ['cljs.core.async.impl.buffers'], ['cljs.core', 'cljs.core.async.impl.protocols']);

@@ -22,8 +22,6 @@
 (def null (js* "null"))
 (def FP (fo/create-task-list-file (fo/user-home)))
 
-;; =================
-;; Functions:
 
 (defn load-task-list
   "String -> GS
@@ -32,6 +30,8 @@
   [p]
   (no/->nodes p))
 
+;; =================
+;; Global State:
 
 ;;(alandipert.storage-atom/clear-local-storage!)
 (defonce conf-state (local-storage (rc/atom {:task-location ""}) :conf-state))
@@ -43,15 +43,11 @@
 (defonce task-list
   (let [tlf (fo/create-task-list-file (:task-location @conf-state))]
     (rc/atom
-      (load-task-list tlf))));
-
-(defonce task-list
-  (let [tlf (fo/create-task-list-file (:task-location @conf-state))]
-    (rc/atom
       (load-task-list tlf))))
-
 (hist/record! task-list :task-list)
 
+;; =================
+;; Functions:
 
 (defn reset-tasklist!
   "String -> GlobalState

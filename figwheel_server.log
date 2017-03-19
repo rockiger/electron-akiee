@@ -39121,3 +39121,461 @@ notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
 [0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
 [32mSuccessfully compiled "app/dev/js/front.js" in 0.344 seconds.[0m
 notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/core.cljs   line:88  column:4  ----[0m
+
+  [1mUse of undeclared Var akiee-front.core/enter-task[0m
+
+  [36m84[0m  [36m Produces the base comment"[0m
+  [36m85[0m  [36m [][0m
+  [36m86[0m  [36m [:div#app[0m
+  [36m87[0m  [36m  [toolbar][0m
+  [33m88[0m  [1m  [enter-task]])[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var akiee-front.core/enter-task[0m
+  [36m89[0m  [36m  ; [search][0m
+  [36m90[0m  [36m  ; [editor][0m
+  [36m91[0m  [36m  ; [task-list]])[0m
+  [36m92[0m  [36m[0m
+  [36m93[0m  [36m(defn big-bang [][0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/core.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.443 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/core.cljs   line:91  column:4  ----[0m
+
+  [1mUse of undeclared Var akiee-front.core/enter-task[0m
+
+  [36m87[0m  [36m Produces the base comment"[0m
+  [36m88[0m  [36m [][0m
+  [36m89[0m  [36m [:div#app[0m
+  [36m90[0m  [36m  [toolbar][0m
+  [33m91[0m  [1m  [enter-task]])[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var akiee-front.core/enter-task[0m
+  [36m92[0m  [36m  ; [search][0m
+  [36m93[0m  [36m  ; [editor][0m
+  [36m94[0m  [36m  ; [task-list]])[0m
+  [36m95[0m  [36m[0m
+  [36m96[0m  [36m(defn big-bang [][0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/core.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.569 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/core.cljs   line:155  column:6  ----[0m
+
+  [1mNo such namespace: dialogs, could not locate dialogs.cljs, dialogs.cljc, or Closure namespace ""[0m
+
+  [36m151[0m  [36m    ^{:key 4} [:td.rank [:span.fa.fa-chevron-down.hover-button {:on-click h/handle-onclick-down}]]]))[0m
+  [36m152[0m  [36m[0m
+  [36m153[0m  [36m(defn task-table [tb][0m
+  [36m154[0m  [36m  (if (empty? tb)[0m
+  [33m155[0m  [1m    (dialogs/empty-message)[0m
+  [0m   [0m  [33m     ^--- No such namespace: dialogs, could not locate dialogs.cljs, dialogs.cljc, or Closure namespace ""[0m
+  [36m156[0m  [36m    [:table.table[0m
+  [36m157[0m  [36m     [:tbody[0m
+  [36m158[0m  [36m      (for [t tb][0m
+  [36m159[0m  [36m        [task t])]]))[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/core.cljs  ----[0m
+[36m----  Compiler Warning on   src_front/akiee_front/core.cljs   line:155  column:6  ----[0m
+
+  [1mUse of undeclared Var dialogs/empty-message[0m
+
+  [36m151[0m  [36m    ^{:key 4} [:td.rank [:span.fa.fa-chevron-down.hover-button {:on-click h/handle-onclick-down}]]]))[0m
+  [36m152[0m  [36m[0m
+  [36m153[0m  [36m(defn task-table [tb][0m
+  [36m154[0m  [36m  (if (empty? tb)[0m
+  [33m155[0m  [1m    (dialogs/empty-message)[0m
+  [0m   [0m  [33m     ^--- Use of undeclared Var dialogs/empty-message[0m
+  [36m156[0m  [36m    [:table.table[0m
+  [36m157[0m  [36m     [:tbody[0m
+  [36m158[0m  [36m      (for [t tb][0m
+  [36m159[0m  [36m        [task t])]]))[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/core.cljs  ----[0m
+[36m----  Compiler Warning on   src_front/akiee_front/core.cljs   line:176  column:37  ----[0m
+
+  [1mNo such namespace: sb, could not locate sb.cljs, sb.cljc, or Closure namespace ""[0m
+
+  [36m172[0m  [36m                                                              [:td.kanban-column[0m
+  [36m173[0m  [36m                                                               {:key (str "kb-" (:todo (first tb)))}[0m
+  [36m174[0m  [36m                                                               (task-table tb)])]]])[0m
+  [36m175[0m  [36m                                  (task-table (db/tasks)))][0m
+  [33m176[0m  [1m     [:aside#task-sidebar sidebar? (sb/sidebar)]]))[0m
+  [0m   [0m  [33m                                    ^--- No such namespace: sb, could not locate sb.cljs, sb.cljc, or Closure namespace ""[0m
+  [36m177[0m  [36m[0m
+  [36m178[0m  [36m(defn app[0m
+  [36m179[0m  [36m " -> Component[0m
+  [36m180[0m  [36m Produces the base comment"[0m
+  [36m181[0m  [36m [][0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/core.cljs  ----[0m
+[36m----  Compiler Warning on   src_front/akiee_front/core.cljs   line:176  column:37  ----[0m
+
+  [1mUse of undeclared Var sb/sidebar[0m
+
+  [36m172[0m  [36m                                                              [:td.kanban-column[0m
+  [36m173[0m  [36m                                                               {:key (str "kb-" (:todo (first tb)))}[0m
+  [36m174[0m  [36m                                                               (task-table tb)])]]])[0m
+  [36m175[0m  [36m                                  (task-table (db/tasks)))][0m
+  [33m176[0m  [1m     [:aside#task-sidebar sidebar? (sb/sidebar)]]))[0m
+  [0m   [0m  [33m                                    ^--- Use of undeclared Var sb/sidebar[0m
+  [36m177[0m  [36m[0m
+  [36m178[0m  [36m(defn app[0m
+  [36m179[0m  [36m " -> Component[0m
+  [36m180[0m  [36m Produces the base comment"[0m
+  [36m181[0m  [36m [][0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/core.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.549 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[31mFailed to compile "app/dev/js/front.js" in 0.259 seconds.[0m
+[36m----  Could not Analyze  src_front/akiee_front/dialogs.cljs  ----[0m
+
+  [1mNo such namespace: akiee.constants, could not locate akiee/constants.cljs, akiee/constants.cljc, or Closure namespace "akiee.constants" [0m
+
+[36m----  Analysis Error : Please see src_front/akiee_front/dialogs.cljs  ----[0m
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.348 seconds.[0m
+notifying browser that file changed:  app/dev/js/front.js
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/dialogs.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[31mFailed to compile "app/dev/js/front.js" in 0.268 seconds.[0m
+[36m----  Could not Analyze  src_front/akiee_front/core.cljs  ----[0m
+
+  [1mNo such namespace: akiee.node, could not locate akiee/node.cljs, akiee/node.cljc, or Closure namespace "akiee.node" [0m
+
+[36m----  Analysis Error : Please see src_front/akiee_front/core.cljs  ----[0m
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[31mFailed to compile "app/dev/js/front.js" in 0.243 seconds.[0m
+[36m----  Could not Analyze  src_front/akiee_front/core.cljs  ----[0m
+
+  [1mNo such namespace: akiee-front.sidebar, could not locate akiee_front/sidebar.cljs, akiee_front/sidebar.cljc, or Closure namespace "akiee-front.sidebar" [0m
+
+[36m----  Analysis Error : Please see src_front/akiee_front/core.cljs  ----[0m
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[31mFailed to compile "app/dev/js/front.js" in 0.256 seconds.[0m
+[36m----  Could not Analyze  src_front/akiee_front/sidebar.cljs  ----[0m
+
+  [1mNo such namespace: akiee.constants, could not locate akiee/constants.cljs, akiee/constants.cljc, or Closure namespace "akiee.constants" [0m
+
+[36m----  Analysis Error : Please see src_front/akiee_front/sidebar.cljs  ----[0m
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.502 seconds.[0m
+notifying browser that file changed:  app/dev/js/front.js
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/sidebar.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.423 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.491 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.471 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 1.554 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/fileoperations.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 1.112 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/app_db.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 1.146 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/app_db.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 1.064 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/app_db.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.455 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 1.023 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/app_db.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.485 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/core.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:19  column:16  ----[0m
+
+  [1mNo such namespace: nodejs, could not locate nodejs.cljs, nodejs.cljc, or Closure namespace ""[0m
+
+  [36m15[0m  [36m;; Nodejs modules[0m
+  [36m16[0m  [36m; (def gui (js/require "nw.gui"))[0m
+  [36m17[0m  [36m(def path (nj/require "path"))[0m
+  [36m18[0m  [36m(def fs (js/require "fs"))[0m
+  [33m19[0m  [1m(def Electron (nodejs/require "electron"))[0m
+  [0m  [0m  [33m               ^--- No such namespace: nodejs, could not locate nodejs.cljs, nodejs.cljc, or Closure namespace ""[0m
+  [36m20[0m  [36m(def BrowserWindow (.-BrowserWindow Electron))[0m
+  [36m21[0m  [36m(println BrowserWindow)[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(enable-console-print!)[0m
+  [36m24[0m  [36m;; Handles events for user interactions[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:19  column:16  ----[0m
+
+  [1mUse of undeclared Var nodejs/require[0m
+
+  [36m15[0m  [36m;; Nodejs modules[0m
+  [36m16[0m  [36m; (def gui (js/require "nw.gui"))[0m
+  [36m17[0m  [36m(def path (nj/require "path"))[0m
+  [36m18[0m  [36m(def fs (js/require "fs"))[0m
+  [33m19[0m  [1m(def Electron (nodejs/require "electron"))[0m
+  [0m  [0m  [33m               ^--- Use of undeclared Var nodejs/require[0m
+  [36m20[0m  [36m(def BrowserWindow (.-BrowserWindow Electron))[0m
+  [36m21[0m  [36m(println BrowserWindow)[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(enable-console-print!)[0m
+  [36m24[0m  [36m;; Handles events for user interactions[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.818 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.727 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.686 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:20  column:37  ----[0m
+
+  [1mUse of undeclared Var akiee-front.handlers/Electron[0m
+
+  [36m16[0m  [36m; (def gui (js/require "nw.gui"))[0m
+  [36m17[0m  [36m(def path (nj/require "path"))[0m
+  [36m18[0m  [36m(def fs (js/require "fs"))[0m
+  [36m19[0m  [36m(def electron (nj/require "electron"))[0m
+  [33m20[0m  [1m(def BrowserWindow (.-BrowserWindow Electron))[0m
+  [0m  [0m  [33m                                    ^--- Use of undeclared Var akiee-front.handlers/Electron[0m
+  [36m21[0m  [36m(.log js/console BrowserWindow)[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(enable-console-print!)[0m
+  [36m24[0m  [36m;; Handles events for user interactions[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.708 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:21  column:18  ----[0m
+
+  [1mUse of undeclared Var akiee-front.handlers/BrowserWindow[0m
+
+  [36m17[0m  [36m(def path (nj/require "path"))[0m
+  [36m18[0m  [36m(def fs (js/require "fs"))[0m
+  [36m19[0m  [36m(def electron (nj/require "electron"))[0m
+  [36m20[0m  [36m(def browserWindow (.-BrowserWindow electron))[0m
+  [33m21[0m  [1m(.log js/console BrowserWindow)[0m
+  [0m  [0m  [33m                 ^--- Use of undeclared Var akiee-front.handlers/BrowserWindow[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(enable-console-print!)[0m
+  [36m24[0m  [36m;; Handles events for user interactions[0m
+  [36m25[0m  [36m[0m
+  [36m26[0m  [36m;; =================[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.795 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:21  column:18  ----[0m
+
+  [1mUse of undeclared Var akiee-front.handlers/window[0m
+
+  [36m17[0m  [36m(def path (nj/require "path"))[0m
+  [36m18[0m  [36m(def fs (js/require "fs"))[0m
+  [36m19[0m  [36m(def electron (nj/require "electron"))[0m
+  [36m20[0m  [36m(def browserWindow (.-BrowserWindow electron))[0m
+  [33m21[0m  [1m(.log js/console window)[0m
+  [0m  [0m  [33m                 ^--- Use of undeclared Var akiee-front.handlers/window[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(enable-console-print!)[0m
+  [36m24[0m  [36m;; Handles events for user interactions[0m
+  [36m25[0m  [36m[0m
+  [36m26[0m  [36m;; =================[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.773 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.684 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.684 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.631 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.678 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:21  column:1  ----[0m
+
+  [1mWrong number of args (1) passed to cljs.core/enable-console-print![0m
+
+  [36m17[0m  [36m(def path (nj/require "path"))[0m
+  [36m18[0m  [36m(def fs (js/require "fs"))[0m
+  [36m19[0m  [36m(def electron (nj/require "electron"))[0m
+  [36m20[0m  [36m[0m
+  [33m21[0m  [1m(enable-console-print![0m
+  [0m  [0m  [33m^--- Wrong number of args (1) passed to cljs.core/enable-console-print![0m
+  [36m22[0m  [36m;; Handles events for user interactions[0m
+  [36m23[0m  [36m[0m
+  [36m24[0m  [36m;; =================[0m
+  [36m25[0m  [36m;; Constants:[0m
+  [36m26[0m  [36m (def WIN (js/window)))[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.677 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.707 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:21  column:1  ----[0m
+
+  [1mWrong number of args (1) passed to cljs.core/enable-console-print![0m
+
+  [36m17[0m  [36m(def path (nj/require "path"))[0m
+  [36m18[0m  [36m(def fs (js/require "fs"))[0m
+  [36m19[0m  [36m(def electron (nj/require "electron"))[0m
+  [36m20[0m  [36m[0m
+  [33m21[0m  [1m(enable-console-print![0m
+  [0m  [0m  [33m^--- Wrong number of args (1) passed to cljs.core/enable-console-print![0m
+  [36m22[0m  [36m;; Handles events for user interactions[0m
+  [36m23[0m  [36m[0m
+  [36m24[0m  [36m;; =================[0m
+  [36m25[0m  [36m;; Constants:[0m
+  [36m26[0m  [36m (def WIN js/window))[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.738 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.639 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.701 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.642 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.656 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.688 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.635 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.699 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.698 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:94  column:48  ----[0m
+
+  [1mUse of undeclared Var akiee-front.handlers/close[0m
+
+  [36m90[0m  [36m  "Register the window event handlers"[0m
+  [36m91[0m  [36m  [][0m
+  [36m92[0m  [36m  (do[0m
+  [36m93[0m  [36m    (events/listen js/window "blur" handle-blur)[0m
+  [33m94[0m  [1m    (events/listen js/window "close" #(println close))))[0m
+  [0m  [0m  [33m                                               ^--- Use of undeclared Var akiee-front.handlers/close[0m
+  [36m95[0m  [36m    ;(.on WIN "close" handle-close))) ;; can not use google closure here, because of nw.js[0m
+  [36m96[0m  [36m[0m
+  [36m97[0m  [36m(defn handle-onchange-search[0m
+  [36m98[0m  [36m  "Event -> GlobalState[0m
+  [36m99[0m  [36m  Consumes the onchange Event ev and changes global filter string for search;[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.718 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.634 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.677 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.728 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.669 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.653 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.65 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.66 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.664 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.648 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.66 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.63 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.699 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.632 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:100  column:6  ----[0m
+
+  [1mNo such namespace: elents, could not locate elents.cljs, elents.cljc, or Closure namespace ""[0m
+
+  [36m 96[0m  [36m  (do[0m
+  [36m 97[0m  [36m    (events/listen js/window "blur" handle-blur)[0m
+  [36m 98[0m  [36m    ;(events/listen js/window "close" #(println "CLOSE"))[0m
+  [36m 99[0m  [36m    ; .getCurrentWindow()[0m
+  [33m100[0m  [1m    (elents/listen (.getCurrentWindow remote) "close" handle-close))) ;; can not use google closure here, because of nw.js[0m
+  [0m   [0m  [33m     ^--- No such namespace: elents, could not locate elents.cljs, elents.cljc, or Closure namespace ""[0m
+  [36m101[0m  [36m[0m
+  [36m102[0m  [36m(defn handle-onchange-search[0m
+  [36m103[0m  [36m  "Event -> GlobalState[0m
+  [36m104[0m  [36m  Consumes the onchange Event ev and changes global filter string for search;[0m
+  [36m105[0m  [36m  returns the app-state"[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[36m----  Compiler Warning on   src_front/akiee_front/handlers.cljs   line:100  column:6  ----[0m
+
+  [1mUse of undeclared Var elents/listen[0m
+
+  [36m 96[0m  [36m  (do[0m
+  [36m 97[0m  [36m    (events/listen js/window "blur" handle-blur)[0m
+  [36m 98[0m  [36m    ;(events/listen js/window "close" #(println "CLOSE"))[0m
+  [36m 99[0m  [36m    ; .getCurrentWindow()[0m
+  [33m100[0m  [1m    (elents/listen (.getCurrentWindow remote) "close" handle-close))) ;; can not use google closure here, because of nw.js[0m
+  [0m   [0m  [33m     ^--- Use of undeclared Var elents/listen[0m
+  [36m101[0m  [36m[0m
+  [36m102[0m  [36m(defn handle-onchange-search[0m
+  [36m103[0m  [36m  "Event -> GlobalState[0m
+  [36m104[0m  [36m  Consumes the onchange Event ev and changes global filter string for search;[0m
+  [36m105[0m  [36m  returns the app-state"[0m
+
+[36m----  Compiler Warning : Please see src_front/akiee_front/handlers.cljs  ----[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.71 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.655 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js
+[0mCompiling "app/dev/js/front.js" from ["src_front" "src_front_profile/akiee_front/dev"]...[0m
+[32mSuccessfully compiled "app/dev/js/front.js" in 0.66 seconds.[0m
+notifying browser that file changed:  app/dev/js/out_front/akiee_front/handlers.js

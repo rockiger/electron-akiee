@@ -13,23 +13,23 @@ goog.require('cljs.test');
  *   Returns node at pos
  */
 akiee_front.rank.task_by_pos = (function akiee_front$rank$task_by_pos(var_args){
-var args29815 = [];
-var len__27678__auto___29818 = arguments.length;
-var i__27679__auto___29819 = (0);
+var args30672 = [];
+var len__27678__auto___30675 = arguments.length;
+var i__27679__auto___30676 = (0);
 while(true){
-if((i__27679__auto___29819 < len__27678__auto___29818)){
-args29815.push((arguments[i__27679__auto___29819]));
+if((i__27679__auto___30676 < len__27678__auto___30675)){
+args30672.push((arguments[i__27679__auto___30676]));
 
-var G__29820 = (i__27679__auto___29819 + (1));
-i__27679__auto___29819 = G__29820;
+var G__30677 = (i__27679__auto___30676 + (1));
+i__27679__auto___30676 = G__30677;
 continue;
 } else {
 }
 break;
 }
 
-var G__29817 = args29815.length;
-switch (G__29817) {
+var G__30674 = args30672.length;
+switch (G__30674) {
 case 1:
 return akiee_front.rank.task_by_pos.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -39,7 +39,7 @@ return akiee_front.rank.task_by_pos.cljs$core$IFn$_invoke$arity$2((arguments[(0)
 
 break;
 default:
-throw (new Error([cljs.core.str.cljs$core$IFn$_invoke$arity$1("Invalid arity: "),cljs.core.str.cljs$core$IFn$_invoke$arity$1(args29815.length)].join('')));
+throw (new Error([cljs.core.str.cljs$core$IFn$_invoke$arity$1("Invalid arity: "),cljs.core.str.cljs$core$IFn$_invoke$arity$1(args30672.length)].join('')));
 
 }
 });

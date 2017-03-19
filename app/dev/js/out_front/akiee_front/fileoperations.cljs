@@ -10,7 +10,6 @@
 (def path (nj/require "path"))
 (def process (nj/require "process"))
 (def org (nj/require "../../resources/lib/markdown-org-mode-parser"))
-;(def chokidar (nj/require "chokidar"))
 
 (enable-console-print!)
 
@@ -19,7 +18,7 @@
 ;; =================
 ;; Constants:
 
-(def testfile "/home/macco/Listings/rakiee/test-load-file.md")
+(def testfile "/home/macco/Listings/rakiee/testflow.md")
 
 ;; =================
 ;; Functions:

@@ -15,7 +15,12 @@ goog.require('historian.core');
 goog.require('cljs.nodejs');
 akiee_front.handlers.path = cljs.nodejs.require.call(null,"path");
 akiee_front.handlers.fs = require("fs");
+akiee_front.handlers.electron = cljs.nodejs.require.call(null,"electron");
+akiee_front.handlers.remote = akiee_front.handlers.electron.remote;
+console.log("ELECTRON: ",akiee_front.handlers.electron);
+console.log("REMOTE: ",akiee_front.handlers.remote);
 cljs.core.enable_console_print_BANG_.call(null);
+akiee_front.handlers.WIN = window;
 akiee_front.handlers._STAR_open_file_chooser_STAR_ = akiee_front.dom_helpers.get_element.call(null,"open-location-dialog");
 akiee_front.handlers._STAR_save_file_chooser_STAR_ = akiee_front.dom_helpers.get_element.call(null,"save-location-dialog");
 akiee_front.handlers.on_file_change_reload = (function akiee_front$handlers$on_file_change_reload(pth){
@@ -68,24 +73,28 @@ return false;
  *   Handles the close event of win
  */
 akiee_front.handlers.handle_close = (function akiee_front$handlers$handle_close(ev){
-return akiee_front.fileoperations.save_task_file.call(null,akiee_front.node.lon__GT_md.call(null,akiee_front.app_db.nodes.call(null)),akiee_front.app_db.task_file_path.call(null),akiee_front.app_db.changed_QMARK_.call(null),akiee_front.app_db.set_changed_BANG_,(function (p1__29824_SHARP_,p2__29825_SHARP_){
-return akiee_front.filewatcher.on_file_change.call(null,p1__29824_SHARP_,p2__29825_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,akiee_front.app_db.task_file_path.call(null)));
+akiee_front.fileoperations.save_task_file.call(null,akiee_front.node.lon__GT_md.call(null,akiee_front.app_db.nodes.call(null)),akiee_front.app_db.task_file_path.call(null),akiee_front.app_db.changed_QMARK_.call(null),akiee_front.app_db.set_changed_BANG_,(function (p1__32978_SHARP_,p2__32979_SHARP_){
+return akiee_front.filewatcher.on_file_change.call(null,p1__32978_SHARP_,p2__32979_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,akiee_front.app_db.task_file_path.call(null)));
 }));
+
+return window.close();
 });
 /**
  * Event ->
  *   Handles the close event of win
  */
 akiee_front.handlers.handle_blur = (function akiee_front$handlers$handle_blur(ev){
-return akiee_front.fileoperations.save_task_file.call(null,akiee_front.node.lon__GT_md.call(null,akiee_front.app_db.nodes.call(null)),akiee_front.app_db.task_file_path.call(null),akiee_front.app_db.changed_QMARK_.call(null),akiee_front.app_db.set_changed_BANG_,(function (p1__29826_SHARP_,p2__29827_SHARP_){
-return akiee_front.filewatcher.on_file_change.call(null,p1__29826_SHARP_,p2__29827_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,akiee_front.app_db.task_file_path.call(null)));
+return akiee_front.fileoperations.save_task_file.call(null,akiee_front.node.lon__GT_md.call(null,akiee_front.app_db.nodes.call(null)),akiee_front.app_db.task_file_path.call(null),akiee_front.app_db.changed_QMARK_.call(null),akiee_front.app_db.set_changed_BANG_,(function (p1__32980_SHARP_,p2__32981_SHARP_){
+return akiee_front.filewatcher.on_file_change.call(null,p1__32980_SHARP_,p2__32981_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,akiee_front.app_db.task_file_path.call(null)));
 }));
 });
 /**
  * Register the window event handlers
  */
 akiee_front.handlers.register_winevents = (function akiee_front$handlers$register_winevents(){
-return goog.events.listen(window,"blur",akiee_front.handlers.handle_blur);
+goog.events.listen(window,"blur",akiee_front.handlers.handle_blur);
+
+return akiee_front.handlers.remote.getCurrentWindow().on("close",akiee_front.handlers.handle_close);
 });
 /**
  * Event -> GlobalState
@@ -432,8 +441,8 @@ akiee_front.filewatcher.unwatch_file.call(null,akiee_front.app_db.task_file_path
 
 akiee_front.app_db.set_task_location_BANG_.call(null,pth);
 
-return akiee_front.fileoperations.save_task_file.call(null,akiee_front.node.lon__GT_md.call(null,akiee_front.app_db.nodes.call(null)),fpth,true,akiee_front.app_db.set_changed_BANG_,(function (p1__29828_SHARP_,p2__29829_SHARP_){
-return akiee_front.filewatcher.on_file_change.call(null,p1__29828_SHARP_,p2__29829_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,pth));
+return akiee_front.fileoperations.save_task_file.call(null,akiee_front.node.lon__GT_md.call(null,akiee_front.app_db.nodes.call(null)),fpth,true,akiee_front.app_db.set_changed_BANG_,(function (p1__32982_SHARP_,p2__32983_SHARP_){
+return akiee_front.filewatcher.on_file_change.call(null,p1__32982_SHARP_,p2__32983_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,pth));
 }));
 });
 /**
@@ -445,8 +454,8 @@ var pth = ev.target.value;
 var fpth = akiee_front.handlers.path.join(pth,akiee_front.constants.filename);
 if(cljs.core.truth_(cljs.core.not_empty.call(null,pth))){
 if(cljs.core.truth_(akiee_front.handlers.fs.existsSync(fpth))){
-var confirmation_29830 = confirm("There is already a tasklist in this location.\nDo you really want to overwrite it?");
-if(cljs.core.not.call(null,confirmation_29830)){
+var confirmation_32984 = confirm("There is already a tasklist in this location.\nDo you really want to overwrite it?");
+if(cljs.core.not.call(null,confirmation_32984)){
 cljs.core.println.call(null,"Do not Overwrite");
 } else {
 cljs.core.println.call(null,"Overwrite");
@@ -482,8 +491,8 @@ historian.core.clear_history_BANG_.call(null);
 
 akiee_front.filewatcher.unwatch_file.call(null,akiee_front.app_db.task_file_path.call(null));
 
-akiee_front.filewatcher.watch_file.call(null,fpth,(function (p1__29831_SHARP_,p2__29832_SHARP_){
-return akiee_front.filewatcher.on_file_change.call(null,p1__29831_SHARP_,p2__29832_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,pth));
+akiee_front.filewatcher.watch_file.call(null,fpth,(function (p1__32985_SHARP_,p2__32986_SHARP_){
+return akiee_front.filewatcher.on_file_change.call(null,p1__32985_SHARP_,p2__32986_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,pth));
 }));
 
 akiee_front.app_db.reset_tasklist_BANG_.call(null,pth);
@@ -533,22 +542,22 @@ return alert([cljs.core.str.cljs$core$IFn$_invoke$arity$1("AKIEE\n"),cljs.core.s
 akiee_front.handlers.handle_keyup = (function akiee_front$handlers$handle_keyup(ev){
 var mac_QMARK_ = ((cljs.core._EQ_.call(null,process.platform,"darwin"))?true:false);
 var ky = ((function (mac_QMARK_){
-return (function (p1__29833_SHARP_){
-return p1__29833_SHARP_.keyCode;
+return (function (p1__32987_SHARP_){
+return p1__32987_SHARP_.keyCode;
 });})(mac_QMARK_))
 ;
 var ctrl_QMARK_ = ((mac_QMARK_)?((function (mac_QMARK_,ky){
-return (function (p1__29834_SHARP_){
-return p1__29834_SHARP_.metaKey;
+return (function (p1__32988_SHARP_){
+return p1__32988_SHARP_.metaKey;
 });})(mac_QMARK_,ky))
 :((function (mac_QMARK_,ky){
-return (function (p1__29835_SHARP_){
-return p1__29835_SHARP_.ctrlKey;
+return (function (p1__32989_SHARP_){
+return p1__32989_SHARP_.ctrlKey;
 });})(mac_QMARK_,ky))
 );
 var shift_QMARK_ = ((function (mac_QMARK_,ky,ctrl_QMARK_){
-return (function (p1__29836_SHARP_){
-return p1__29836_SHARP_.shiftKey;
+return (function (p1__32990_SHARP_){
+return p1__32990_SHARP_.shiftKey;
 });})(mac_QMARK_,ky,ctrl_QMARK_))
 ;
 if(cljs.core.truth_((function (){var and__26557__auto__ = cljs.core._EQ_.call(null,ky.call(null,ev),(32));
@@ -737,8 +746,8 @@ var fpth = akiee_front.app_db.task_file_path.call(null);
 var pth = akiee_front.app_db.task_location.call(null);
 if(cljs.core.truth_(akiee_front.handlers.fs.existsSync(fpth))){
 return akiee_front.filewatcher.watch_file.call(null,fpth,((function (fpth,pth){
-return (function (p1__29837_SHARP_,p2__29838_SHARP_){
-return akiee_front.filewatcher.on_file_change.call(null,p1__29837_SHARP_,p2__29838_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,pth));
+return (function (p1__32991_SHARP_,p2__32992_SHARP_){
+return akiee_front.filewatcher.on_file_change.call(null,p1__32991_SHARP_,p2__32992_SHARP_,akiee_front.handlers.on_file_change_reload.call(null,pth));
 });})(fpth,pth))
 );
 } else {
