@@ -27,6 +27,13 @@
 ;; =================
 ;; Functions:
 
+(defn set-title! []
+  (let [title-txt (if (= (.basename path (db/task-location)) ".akiee")
+                    "Akiee"
+                    (str (.basename path (db/task-location)) " — Akiee"))]
+    (set! (.-title js/Window) title-txt)
+    (set! (.-title js/document) title-txt)))
+
 (defn list-state-button
   "String String String -> Component
   Consumes the text tx, the id and the title t, the state,
@@ -168,14 +175,16 @@
         sidebar? (if (db/selected)
                    {:class ""}
                    {:class "closed"})]
-    [:div#tasks show? [:div#list (if (= (db/list-state) ALL)
-                                   (let [states ["TODO" "DOING" "DONE"]]
-                                     [:table.table [:tbody [:tr.kanban-row
-                                                            (for [tb (db/tasks)]
-                                                              [:td.kanban-column
-                                                               {:key (str "kb-" (:todo (first tb)))}
-                                                               (task-table tb)])]]])
-                                  (task-table (db/tasks)))]
+    [:div#tasks show?
+     [:div#list (if (= (db/list-state) ALL)
+                 (let [states ["TODO" "DOING" "DONE"]]
+                   [:table.table
+                    [:tbody
+                     [:tr.kanban-row
+                      (for [tb (db/tasks)]
+                        [:td.kanban-column {:key (str "kb-" (:todo (first tb)))}
+                         (task-table tb)])]]])
+                 (task-table (db/tasks)))]
      [:aside#task-sidebar sidebar? (sb/sidebar)]]))
 
 (defn app
@@ -190,16 +199,16 @@
   [task-list]])
 
 (defn big-bang []
+  (h/hide-menu)
   (h/register-keyevents)
   (h/register-winevents)
-  ;(h/create-menu)
-  ;(h/create-taskmenu)
+  (h/create-menu)
   (r/render-component
     [app]
-    (.getElementById js/document "root")))
-  ;(r/track! set-title!)
-  ;(sb/datepicker-config)
-  ;(h/register-events))
+    (.getElementById js/document "root"))
+  (r/track! set-title!)
+  (sb/datepicker-config)
+  (h/register-events))
 
 (defn init! [setting]
   (println setting)

@@ -13,3 +13,6 @@ node_modules/*
 *.ipr
 *.iws
 electron/*
+app/dev/js/*
+app/prod/js/*
+figwheel_server.log

@@ -19,23 +19,16 @@
 (def electron (nj/require "electron"))
 (def remote (.-remote electron))
 
-(.log js/console "ELECTRON: " electron)
-(.log js/console "REMOTE: " remote)
-
 (enable-console-print!)
 ;; Handles events for user interactions
 
 ;; =================
 ;; Constants:
 
-(def WIN js/window)
 
 ;; =================
 ;; Globals
-; (def *menu* (new gui.Menu))
-; (def *taskmenu* (new gui.Menu))
-(def *open-file-chooser* (get-element "open-location-dialog"))
-(def *save-file-chooser* (get-element "save-location-dialog"))
+(def *menu* (new remote.Menu))
 
 ;; =================
 ;; Functions:
@@ -225,26 +218,32 @@
   "Event -> Void
   Consumes the onclick Event ev and toggles the menu"
   [ev]
-  false)
-  ; (let [undo (aget (.-items *menu*) 0)
-  ;       redo (aget (.-items *menu*) 1)]
-  ;   (set! (.-enabled undo) (hist/can-undo?))
-  ;   (set! (.-enabled redo) (hist/can-redo?))))
-    ; (.popup *menu* (- (.-width WIN) 154) 39)))
+  (let [undo (aget (.-items *menu*) 0)
+        redo (aget (.-items *menu*) 1)]
+    (set! (.-enabled undo) (hist/can-undo?))
+    (set! (.-enabled redo) (hist/can-redo?))
+    (.popup *menu*))) ;; I can't set the position of the popup right now.
 
 (defn onclick-taskmenu
   "Event -> Void
   Consumes the onclick Event ev and toggles the menu"
   [ev]
-  false)
-  ; (let [ky (rank-helper ev)
-  ;       native (.-nativeEvent ev)
-  ;       to-top-entry (aget (.-items *taskmenu*) 0)
-  ;       to-bottom-entry (aget (.-items *taskmenu*) 1)]
-  ;   (set! (.-click to-top-entry) #(r/to-top ky))
-  ;   (set! (.-click to-bottom-entry) #(r/to-bottom ky))
-  ;   (.popup *taskmenu* (.-pageX native) (.-pageY native))
-  ;   (.stopPropagation ev)))
+  (let [ky (rank-helper ev)
+        native (.-nativeEvent ev)
+        taskmenu (new remote.Menu)
+        to-top-entry
+        (new remote.MenuItem
+             (clj->js
+              {:label "Top" :click #(r/to-top ky) :enabled true}))
+        to-bottom-entry
+        (new remote.MenuItem
+             (clj->js
+              {:label "Bottom" :click #(r/to-bottom ky) :enabled true}))]
+    (.append taskmenu to-top-entry)
+    (.append taskmenu to-bottom-entry)
+    (.popup taskmenu (.-pageX native) (.-pageY native))
+    ;; I ask myself, if the taskmenu get's garbage collected after use?
+    (.stopPropagation ev)))
 
 (defn onblur-sidebar-input
   "Event -> GlobalState
@@ -386,10 +385,10 @@
   ;(fw/watch-file fpth #(fw/on-file-change %1 %2 (on-file-change-reload pth)))) ; to escape circular dependency
 
 (defn save-task-location!
-  "Event -> Void
-  Sets the the tasks-location to the value attribute of the given Event ev"
-  [ev]
-  (let [pth (.-value (.-target ev))
+  "Array -> Void
+  Sets the the tasks-location to the first String in the given Array pths and saves the tasklist to that new location"
+  [pths]
+  (let [pth (first pths)
         fpth (.join path pth filename)]
     (when (not-empty pth)
       (if (.existsSync fs fpth)
@@ -403,14 +402,19 @@
         (do
           (println "Save as new task list")
           (.log js/console fpth)
-          (save-task-helper pth fpth)))
-      (set! (.-value (.-target ev)) ""))))
+          (save-task-helper pth fpth))))))
 
 (defn save-task-location-dialog!
  "Event -> Void
-  Show the Task statistics"
-  []
-  (.click *save-file-chooser*))
+ Show the Task statistics"
+ []
+ (let [dialog (.-dialog remote)]
+   (.showOpenDialog dialog
+     (clj->js {:title "Save Task Folder"
+               :buttonLabel "Choose Task Folder"
+               :message "Select you folder you want to save as your task folder."
+               :properties (clj->js [:openDirectory])})
+     save-task-location!)))
 
 (defn open-task-helper [pth fpth]
   (db/set-unselected!)
@@ -421,10 +425,10 @@
   (db/set-task-location! pth))
 
 (defn open-task-location!
- "Event -> Void
- Sets the the tasks-location to the value attribute of the given Event ev"
- [ev]
- (let [pth (.-value (.-target ev))
+ "Array -> Void
+ Sets the the tasks-location to the first String in the given Array pths"
+ [pths]
+ (let [pth (first pths)
        fpth (.join path pth filename)]
     (when (not-empty pth)
      (if (.existsSync fs fpth)
@@ -432,13 +436,21 @@
         (.log js/console "Fileexists")
         (.log js/console pth)
         (open-task-helper pth fpth))
-      (js/alert "This is not a valid task location directory!")))))
+      (.showErrorBox remote.dialog
+        "Couldn't load taskfile"
+        "This is not a valid task location directory!")))))
 
 (defn open-task-location-dialog!
  "Event -> Void
   Show the Task statistics"
   []
-  (.click *open-file-chooser*))
+  (let [dialog (.-dialog remote)]
+    (.showOpenDialog dialog
+      (clj->js {:title "Open Task Folder"
+                :buttonLabel "Open Task Folder"
+                :message "Select you folder you want to open as your task folder."
+                :properties (clj->js [:openDirectory])})
+      open-task-location!)))
 
 (defn show-about!
   "Event -> Void
@@ -518,30 +530,22 @@
     (when (.existsSync fs fpth)
       (fw/watch-file fpth #(fw/on-file-change %1 %2 (on-file-change-reload pth))))))
 
-; (defn create-menu
-;   "Create the menus"
-;   []
-;   (do
-;     (.addEventListener *open-file-chooser* "change" open-task-location!)
-;     (.addEventListener *save-file-chooser* "change" save-task-location!)
-;     (.append *menu* (new gui.MenuItem (clj->js {:label "Undo" :click hist/undo! :enabled false})))
-;     (.append *menu* (new gui.MenuItem (clj->js {:label "Redo" :click hist/redo! :enabled false})))
-;     (.append *menu* (new gui.MenuItem (clj->js {:type "separator"})))
-;     (.append *menu* (new gui.MenuItem (clj->js {:label "Task statistics" :click show-statistics! :enabled true})))
-;     (.append *menu* (new gui.MenuItem (clj->js {:type "separator"})))
-;     (.append *menu* (new gui.MenuItem (clj->js {:label "Open tasks...        " :click open-task-location-dialog! :enabled true})))
-;     (.append *menu* (new gui.MenuItem (clj->js {:label "Save tasks...        " :click save-task-location-dialog! :enabled true})))
-;     (.append *menu* (new gui.MenuItem (clj->js {:type "separator"})))
-;     (.append *menu* (new gui.MenuItem (clj->js {:label "About" :click show-about! :enabled true})))
-;     (set! js/mn *menu*)))
+(defn create-menu
+  "Create the menus"
+  []
+  (do
+    (.append *menu* (new remote.MenuItem (clj->js {:label "Undo" :click hist/undo! :enabled false})))
+    (.append *menu* (new remote.MenuItem (clj->js {:label "Redo" :click hist/redo! :enabled false})))
+    (.append *menu* (new remote.MenuItem (clj->js {:type "separator"})))
+    (.append *menu* (new remote.MenuItem (clj->js {:label "Task statistics" :click show-statistics! :enabled true})))
+    (.append *menu* (new remote.MenuItem (clj->js {:type "separator"})))
+    (.append *menu* (new remote.MenuItem (clj->js {:label "Open tasks...        " :click open-task-location-dialog! :enabled true})))
+    (.append *menu* (new remote.MenuItem (clj->js {:label "Save tasks...        " :click save-task-location-dialog! :enabled true})))
+    (.append *menu* (new remote.MenuItem (clj->js {:type "separator"})))
+    (.append *menu* (new remote.MenuItem (clj->js {:label "About" :click show-about! :enabled true})))))
 
-; (defn create-taskmenu
-;   "Create the task menu"
-;   []
-;   (do
-;     (.append *taskmenu* (new gui.MenuItem (clj->js {:label "Top" :click #() :enabled true})))
-;     (.append *taskmenu* (new gui.MenuItem (clj->js {:label "Bottom" :click #() :enabled true})))
-;     (set! js/mn *taskmenu*)))
+(defn hide-menu []
+  (.setMenuBarVisibility (.getCurrentWindow remote) false))
 
 (defn register-events []
   (register-datepicker-events)
