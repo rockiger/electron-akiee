@@ -13,11 +13,11 @@
             [cljs.nodejs :as nj]))
 
 ;; Nodejs modules
-; (def gui (js/require "nw.gui"))
 (def path (nj/require "path"))
 (def fs (js/require "fs"))
 (def electron (nj/require "electron"))
 (def remote (.-remote electron))
+(def shell (.-shell electron))
 
 (enable-console-print!)
 ;; Handles events for user interactions
@@ -362,8 +362,8 @@
   [ev]
   (let [target (.-target ev)]
     (.preventDefault ev)
-    (.stopPropagation ev)))
-    ; (.openExternal (.-Shell gui) target)))
+    (.stopPropagation ev)
+    (.openExternal shell (.-href target))))
 
 (defn show-statistics!
   "Event -> Void
