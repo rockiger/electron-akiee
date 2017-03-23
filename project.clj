@@ -123,10 +123,10 @@
                                               :output-dir "app/prod/js/out_main"
 
                                               ;; simple compile (dev)
-                                              :optimizations :simple
+                                              ;; :optimizations :simple
 
                                               ;; advanced compile (prod)
-                                              ;;:optimizations :advanced
+                                              :optimizations :advanced
 
                                               ;;:source-map "app/prod/js/test.js.map"
                                               :pretty-print true
@@ -146,10 +146,10 @@
                                                :output-dir "app/prod/js/out_front"
 
                                                ;; simple compile (dev)
-                                               :optimizations :simple
+                                               ;;:optimizations :simple
 
                                                ;; advanced compile (prod)
-                                               ;;:optimizations :advanced
+                                               :optimizations :advanced
 
                                                ;;:source-map "app/prod/js/test.js.map"
                                                :pretty-print true
