@@ -12,7 +12,8 @@
                  [historian "1.1.1"]
                  [alandipert/storage-atom "2.0.1"]
                  [ring/ring-core "1.5.1"]
-                 [figwheel "0.5.9"]]
+                 [figwheel "0.5.9"]
+                 [binaryage/devtools "0.9.2"]]
   :plugins [[lein-cljsbuild "1.1.5"]
             [lein-externs "0.1.6"]
             [lein-shell "0.5.0"]
@@ -70,11 +71,11 @@
                                              :target :nodejs
 
                                              ;; no optimize compile (dev)
-                                             ;; :optimizations :none
+                                             :optimizations :none
                                              :output-dir "app/dev/js/out_main"
 
                                              ;; simple compile (dev)
-                                             :optimizations :simple
+                                             ;;:optimizations :simple
 
                                              ;; advanced compile (prod)
                                              ;;:optimizations :advanced

@@ -35,7 +35,8 @@
                                         {:width 1000 :height 600
                                          :icon
                                          (str (.resolve path (js* "__dirname") "../icon.svg"))})))
-
+         ;; load react-extension for dev tools
+         (.addDevToolsExtension BrowserWindow "/home/macco/.config/google-chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.0.12_0/")
          ;; when no optimize comment out
          (.loadURL @*win* (str "file://" (.resolve path (js* "__dirname") "../index.html")))
          ;; when no optimize uncomment

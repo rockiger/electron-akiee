@@ -1,7 +1,8 @@
 (ns akiee-front.init
   (:require [figwheel.client :as fw :include-macros true]
             [akiee-front.core :as core]
-            [akiee-front.conf :as conf]))
+            [akiee-front.conf :as conf]
+            [devtools.core :as devtools]))
 
 (enable-console-print!)
 
@@ -10,6 +11,7 @@
  :jsload-callback 'start-descjop!)
 
 (defn start-descjop! []
+  (devtools/install! :all)
   (core/init! conf/setting))
 
 (start-descjop!)

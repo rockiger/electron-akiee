@@ -8,6 +8,7 @@
             [akiee-front.sidebar :as sb]
             [akiee-front.dialogs :as dialogs]))
 
+
 (enable-console-print!)
 
 ;; TODO unit test for reagent
@@ -212,4 +213,5 @@
 
 (defn init! [setting]
   (println setting)
+  (.log js/console ["teat" "enita" {:earne "earnet"}])
   (big-bang))
