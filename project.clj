@@ -6,7 +6,9 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.495" :exclusions [org.apache.ant/ant]]
                  [org.clojure/core.async "0.3.442"]
-                 [reagent "0.6.1"]
+                 [reagent "0.6.1" :exclusions [cljsjs/react]]
+                 [cljsjs/react-with-addons "15.4.2-2"]
+                 [cljs-react-test "0.1.4-SNAPSHOT"]
                  [garden "1.3.2"]
                  [jayq "2.5.4"]
                  [historian "1.1.1"]
@@ -17,7 +19,8 @@
   :plugins [[lein-cljsbuild "1.1.5"]
             [lein-externs "0.1.6"]
             [lein-shell "0.5.0"]
-            [lein-figwheel "0.5.9" :exclusions [org.clojure/core.cache]]]
+            [lein-figwheel "0.5.9" :exclusions [org.clojure/core.cache]]
+            [lein-doo "0.1.6"]]
   :source-paths ["src_tools"]
   :aliases {"descjop-help" ["new" "descjop" "help"]
             "descjop-version" ["new" "descjop" "version"]
@@ -153,7 +156,12 @@
 
                                                ;;:source-map "app/prod/js/test.js.map"
                                                :pretty-print true
-                                               :output-wrapper true}}}}
+                                               :output-wrapper true}}
+                       :test {      :id "test"
+                                    :source-paths ["src_front" "src_front_profile/akiee_front/dev" "test_front"]
+                                    :compiler {:output-to "app/dev/js/test.js"
+                                               :main akiee-front.runner
+                                               :optimizations :none}}}}
   :figwheel {:http-server-root "public"
              :ring-handler figwheel-middleware/app
              :server-port 3449})
