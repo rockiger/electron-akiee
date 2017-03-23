@@ -7,8 +7,9 @@
                  [org.clojure/clojurescript "1.9.495" :exclusions [org.apache.ant/ant]]
                  [org.clojure/core.async "0.3.442"]
                  [reagent "0.6.1" :exclusions [cljsjs/react]]
-                 [cljsjs/react-with-addons "15.4.2-2"]
                  [cljs-react-test "0.1.4-SNAPSHOT"]
+                 [cljsjs/react-with-addons "15.2.0-0"]
+                 [cljsjs/react-dom "15.2.0-0" :exclusions [cljsjs/react]]
                  [garden "1.3.2"]
                  [jayq "2.5.4"]
                  [historian "1.1.1"]
@@ -86,7 +87,7 @@
                                              ;;:source-map "app/dev/js/test.js.map"
                                              :pretty-print true
                                              :output-wrapper true}}
-                       :dev-front {:source-paths ["src_front" "src_front_profile/akiee_front/dev"]
+                       :dev-front {:source-paths ["src_front" "src_front_profile/akiee_front/dev" "test_front"]
                                    :incremental true
                                    :jar true
                                    :assert true
@@ -156,12 +157,7 @@
 
                                                ;;:source-map "app/prod/js/test.js.map"
                                                :pretty-print true
-                                               :output-wrapper true}}
-                       :test {      :id "test"
-                                    :source-paths ["src_front" "src_front_profile/akiee_front/dev" "test_front"]
-                                    :compiler {:output-to "app/dev/js/test.js"
-                                               :main akiee-front.runner
-                                               :optimizations :none}}}}
+                                               :output-wrapper true}}}}
   :figwheel {:http-server-root "public"
              :ring-handler figwheel-middleware/app
              :server-port 3449})

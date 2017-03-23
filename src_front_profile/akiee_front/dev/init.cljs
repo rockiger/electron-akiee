@@ -2,7 +2,8 @@
   (:require [figwheel.client :as fw :include-macros true]
             [akiee-front.core :as core]
             [akiee-front.conf :as conf]
-            [devtools.core :as devtools]))
+            [devtools.core :as devtools]
+            [akiee-front.runner :as runner]))
 
 (enable-console-print!)
 
@@ -12,6 +13,7 @@
 
 (defn start-descjop! []
   (devtools/install! :all)
+  (runner/run-tests)
   (core/init! conf/setting))
 
 (start-descjop!)

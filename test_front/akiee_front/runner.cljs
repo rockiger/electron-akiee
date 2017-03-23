@@ -1,5 +1,8 @@
 (ns akiee-front.runner
-  (:require [doo.runner :refer-macros [doo-tests]]
+  (:require [cljs.test :refer-macros [run-tests]]
             [akiee-front.core-test]))
 
-(doo-tests 'akiee-front.core-test)
+(enable-console-print!)
+
+(defn run-tests []
+  (run-tests 'akiee-front.core-test))
