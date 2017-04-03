@@ -18,3 +18,4 @@ app/prod/js/*
 figwheel_server.log
 .lein-failures
 app/dev/js/*
+app/prod/js/*
