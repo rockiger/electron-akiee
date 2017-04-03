@@ -213,5 +213,4 @@
 
 (defn init! [setting]
   (println setting)
-  (.log js/console ["teat" "enita" {:earne "earnet"}])
   (big-bang))
