@@ -33,7 +33,7 @@
 ;; =================
 ;; Global State:
 
-;;(alandipert.storage-atom/clear-local-storage!)
+(alandipert.storage-atom/clear-local-storage!)
 (defonce conf-state (local-storage (rc/atom {:task-location ""}) :conf-state))
 (if (or (empty? (:task-location @conf-state)) nil)
     (swap! conf-state assoc :task-location (fo/user-home)))
