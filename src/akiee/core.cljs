@@ -32,7 +32,7 @@
   (.on app "ready"
        (fn []
          (reset! *win* (BrowserWindow. (clj->js
-                                        {:width 1000 :height 600
+                                        {:width 960 :height 600
                                          :icon
                                          (str (.resolve path (js* "__dirname") "../icon.svg"))})))
          ;; load react-extension for dev tools

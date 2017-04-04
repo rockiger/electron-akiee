@@ -181,9 +181,13 @@
 (defn no-of-tasks-helper [state]
   (let [filter-tasks (fn [x] (if (= (:level x) 2) true false))
         filter-state (fn [x] (cond
-                                  (= state ALL) true
-                                  (= state (:todo x)) true
-                                  :else false))]
+                                (= state ALL) true
+                                (and (= state DONE)
+                                   (or (= state (:todo x))
+                                       (and (= TODO (:todo x)) (:fin x))))
+                                true
+                                (= state (:todo x)) true
+                                :else false))]
     (->> @task-list
          (filter filter-tasks)
          (filter filter-state)
