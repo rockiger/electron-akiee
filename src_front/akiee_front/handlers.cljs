@@ -8,7 +8,6 @@
             [akiee-front.rank :as r]
             [akiee-front.constants :refer [filename]]
             [clojure.string :as s]
-            [jayq.core :refer [$ on attr html]]
             [historian.core :as hist]
             [cljs.nodejs :as nj]))
 
@@ -361,9 +360,10 @@
   Handles the event when the user clicks on a link in the details area"
   [ev]
   (let [target (.-target ev)]
-    (.preventDefault ev)
-    (.stopPropagation ev)
-    (.openExternal shell (.-href target))))
+    (when (= (.-tagName target) "A")
+      (.preventDefault ev)
+      (.stopPropagation ev)
+      (.openExternal shell (.-href target)))))
 
 (defn show-statistics!
   "Event -> Void
@@ -521,8 +521,8 @@
 (defn register-click-links
   "Register the click events on links in the details area"
   []
-  (let [$body ($ :body)]
-    (on $body "click" :a "data" handle-details-link-click)))
+  (let [sidebar (get-element "task-sidebar")]
+    (events/listen sidebar goog.events.EventType.CLICK handle-details-link-click)))
 
 (defn register-file-watcher []
   (let [fpth (db/task-file-path)
@@ -548,6 +548,6 @@
   (.setMenuBarVisibility (.getCurrentWindow remote) false))
 
 (defn register-events []
-  (register-datepicker-events)
+  ;(register-datepicker-events)
   (register-click-links)
   (register-file-watcher))
