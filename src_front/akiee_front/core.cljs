@@ -208,6 +208,7 @@
     [app]
     (.getElementById js/document "root"))
   (r/track! set-title!)
+  (sb/datepicker-config)
   (h/register-events))
 
 (defn init! [setting]

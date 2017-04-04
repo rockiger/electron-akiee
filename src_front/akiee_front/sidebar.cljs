@@ -105,3 +105,10 @@
      (state node)
      (project node)
      (body node)]))
+
+(defn datepicker-config []
+  (.ready (js/$ js/document)
+          (do
+            (set! (.-autoclose (.-defaults (.-datepicker (.-fn js/$)))) true)
+            (set! (.-toggleActive (.-defaults (.-datepicker (.-fn js/$)))) true)
+            (set! (.-todayHighlight (.-defaults (.-datepicker (.-fn js/$)))) true))))

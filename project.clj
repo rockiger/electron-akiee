@@ -10,8 +10,6 @@
                  [cljs-react-test "0.1.4-SNAPSHOT"]
                  [cljsjs/react-with-addons "15.2.0-0"]
                  [cljsjs/react-dom "15.2.0-0" :exclusions [cljsjs/react]]
-                 ;[cljsjs/jquery "2.2.4-0"]
-                 ;[cljsjs/bootstrap "3.3.6-1"]
                  [garden "1.3.2"]
                  [jayq "2.5.4"]
                  [historian "1.1.1"]
@@ -125,14 +123,14 @@
                                               :target :nodejs
 
                                               ;; no optimize compile (dev)
-                                              :optimizations :none
+                                              ;;:optimizations :none
                                               :output-dir "app/prod/js/out_main"
 
                                               ;; simple compile (dev)
                                               ;; :optimizations :simple
 
                                               ;; advanced compile (prod)
-                                              ;;:optimizations :advanced
+                                              :optimizations :advanced
 
                                               ;;:source-map "app/prod/js/test.js.map"
                                               :pretty-print true
@@ -148,14 +146,14 @@
                                                ;; :target :nodejs
 
                                                ;; no optimize compile (dev)
-                                               :optimizations :none
+                                               ;;:optimizations :none
                                                :output-dir "app/prod/js/out_front"
 
                                                ;; simple compile (dev)
                                                ;;:optimizations :simple
 
                                                ;; advanced compile (prod)
-                                               ;:optimizations :advanced
+                                               :optimizations :advanced
 
                                                ;;:source-map "app/prod/js/test.js.map"
                                                :pretty-print true
