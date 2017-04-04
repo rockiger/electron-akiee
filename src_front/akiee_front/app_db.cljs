@@ -110,6 +110,10 @@
   (let [filter-tasks (fn [x] (if (= (:level x) 2) true false))
         filter-state (fn [x] (cond
                               (= ls ALL) true
+                              (and (= ls DONE)
+                                   (or (= ls (:todo x))
+                                       (and (= TODO (:todo x)) (:fin x))))
+                              true
                               (= ls (:todo x)) true
                               :else false))
         filter-search (fn [x] (if-not (empty? (:ss @gs))
@@ -419,12 +423,14 @@
   (let [lon (vec @task-list)
         pos (node-pos-by-key ky lon)
         nd  (get lon pos)
-        ts  (:todo nd)]
+        ts  (:todo nd)
+        repeat (:repeat nd)]
     (reset-lon! app-state
                 (assoc lon pos
                   (assoc nd :todo
                     (cond
                      (= ts TODO)  DOING
+                     (and (= ts DOING) repeat) TODO
                      (= ts DOING) DONE
                      (= ts DONE)  TODO)
                     (if (= ts DOING) :fin)
