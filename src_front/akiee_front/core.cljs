@@ -183,7 +183,7 @@
                     [:tbody
                      [:tr.kanban-row
                       (for [tb (db/tasks)]
-                        [:td.kanban-column {:key (str "kb-" (:todo (first tb)))}
+                        [:td.kanban-column {:key (str "kb-" (gensym))}
                          (task-table tb)])]]])
                  (task-table (db/tasks)))]
      [:aside#task-sidebar sidebar? (sb/sidebar)]]))
