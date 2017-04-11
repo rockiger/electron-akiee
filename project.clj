@@ -160,4 +160,5 @@
                                                :output-wrapper true}}}}
   :figwheel {:http-server-root "public"
              :ring-handler figwheel-middleware/app
-             :server-port 3449})
+             :server-port 3449
+             :reload-clj-files {:clj true :cljc false}})

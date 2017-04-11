@@ -81,6 +81,14 @@ navbar-header {
   padding: 0 10px;
 }
 
+#details li {
+  margin-left: -20px;
+}
+
+#details .fa-square-o {
+  margin-right: 5px;
+}
+
 #details div:hover, #details h4:hover {
   background-color: #f2f2f2;
   cursor: pointer;
