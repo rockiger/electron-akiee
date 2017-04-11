@@ -538,6 +538,8 @@
     (.append *menu* (new remote.MenuItem (clj->js {:label "Redo" :click hist/redo! :enabled false})))
     (.append *menu* (new remote.MenuItem (clj->js {:type "separator"})))
     (.append *menu* (new remote.MenuItem (clj->js {:label "Task statistics" :click show-statistics! :enabled true})))
+    (.append *menu* (new remote.MenuItem (clj->js {:label "Board View" :click db/switch-all! :enabled true})))
+    (.append *menu* (new remote.MenuItem (clj->js {:label "Code View" :click db/switch-editor! :enabled true})))
     (.append *menu* (new remote.MenuItem (clj->js {:type "separator"})))
     (.append *menu* (new remote.MenuItem (clj->js {:label "Open tasks...        " :click open-task-location-dialog! :enabled true})))
     (.append *menu* (new remote.MenuItem (clj->js {:label "Save tasks...        " :click save-task-location-dialog! :enabled true})))

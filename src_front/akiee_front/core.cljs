@@ -83,9 +83,9 @@
       todo-button
       doing-button
       done-button]
-     board-button
+     ;board-button
      [:div#toolbar-spacer.spacer]
-     editor-switch
+     ;editor-switch
      search-switch
      entry-switch
      menu-button
